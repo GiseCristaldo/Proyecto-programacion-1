@@ -152,13 +152,10 @@ document.getElementById('carrito-container').addEventListener('click', (event) =
             mostrarCarrito();
         }
     } else if (event.target.classList.contains('decrementar')) {
-        const item = ItemCarrito.itemsCarrito.find(item => item.producto.codigo === codigo);
-        if (item && item.cantidad > 1) {
-            item.cantidad -= 1;
-            ItemCarrito.guardarEnLocalStorage();
+         ItemCarrito.decrementar(codigo);
             mostrarCarrito();
         }
-    } else if (event.target.classList.contains('eliminar-carrito')) {
+     else if (event.target.classList.contains('eliminar-carrito')) {
         ItemCarrito.eliminarDelCarrito(codigo);
         mostrarCarrito();
     }

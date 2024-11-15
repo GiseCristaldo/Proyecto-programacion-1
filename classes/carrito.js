@@ -58,7 +58,7 @@ export class ItemCarrito {
            
         };
     }
-    static eliminarDelCarrito(codigo) {
+    static decrementar(codigo) {
         const item = this.itemsCarrito.find(item => item.producto.codigo === codigo);
         if (item) {
             if (item.cantidad > 1) {
@@ -66,6 +66,16 @@ export class ItemCarrito {
             } else {
                 this.itemsCarrito = this.itemsCarrito.filter(item => item.producto.codigo !== codigo); // Eliminar del carrito
             }
+            this.guardarEnLocalStorage();
+        }
+    }
+
+    static eliminarDelCarrito(codigo) {
+        const item = this.itemsCarrito.find(item => item.producto.codigo === codigo);
+        if (item) {
+    
+                this.itemsCarrito = this.itemsCarrito.filter(item => item.producto.codigo !== codigo); // Eliminar del carrito
+
             this.guardarEnLocalStorage();
         }
     }
